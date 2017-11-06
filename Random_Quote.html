@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<script>
+			 var totalQuote = "";
+			 $(document).ready(function(){
+				newQuote();
+			 });	
+			 	
+				function newQuote() {
+					totalQuote = ""
+					var red = Math.floor(Math.random() * 240);
+					var green = Math.floor(Math.random() * 240);
+					var blue = Math.floor(Math.random() * 240);
+					var rgbValue = "rgb(" + red + ", " + green + ", " + blue + ")";
+					$("#newQuoteBtn").css("background-color", rgbValue);
+					$("#quote").css("color", rgbValue);
+					$("#quotee").css("color", rgbValue);
+					$("#back_ground").css("background-color", rgbValue); 
+      				$.ajax( {
+      					dataType: 'json',
+      					url: 'http://quotes.stormconsultancy.co.uk/random.json',
+      					success: function(data) {
+							$("#quote").html(data.quote);
+							$("#quotee").html("  -" + data.author);
+							totalQuote += '"' + data.quote + '"' + "  -" + data.author;
+						}
+					})
+      			};
+
+      			function tweetThis() {
+      				var tweetUrl = 'https://twitter.com/share?text=' + totalQuote ;
+      				window.open(tweetUrl);
+      			};
+
+		</script>
+		<style type="text/css">
+			.quote_well {
+				background-color: rgb(240, 240, 240);
+				margin-top: 120px;
+				margin-right: 60px; 
+				margin-left: 260px;
+				padding-bottom: 60px;
+				padding-right: 70px;
+				border: none;
+			}
+		</style>	
+	</head>
+	<body id="back_ground">
+		<!-- Quote well -->
+		<div class="row">
+			<div class="containter-fluid col-lg-7">
+				<div class="well text-center quote_well">
+					<h3 id="quote" >
+					</h3>
+					<p></p>
+					<p id="quotee" align="right">
+					
+					</p>
+					<p></p>
+					<button title="Generate new quote." class="pull-right" type="button" id="newQuoteBtn" style="color:white;" onclick="newQuote(this)">New Quote
+					</button>
+					<button title="Tweet this quote." type="button" id="tweetBtn" onclick="tweetThis(this)">Tweet
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
