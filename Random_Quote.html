@@ -12,7 +12,7 @@
 			 });	
 			 	
 				function newQuote() {
-					totalQuote = ""
+				  	totalQuote = "";
 					var red = Math.floor(Math.random() * 240);
 					var green = Math.floor(Math.random() * 240);
 					var blue = Math.floor(Math.random() * 240);
@@ -27,7 +27,7 @@
       					success: function(data) {
 							$("#quote").html(data.quote);
 							$("#quotee").html("  -" + data.author);
-							totalQuote += '"' + data.quote + '"' + "  -" + data.author;
+							totalQuote += '"' + data.quote.replace(/;/g, "--") + '"' + "  -" + data.author;
 						}
 					})
       			};
@@ -48,6 +48,10 @@
 				padding-right: 70px;
 				border: none;
 			}
+			#tweetBtn {
+				padding: 16px 16px;
+				border: none;
+			}
 		</style>	
 	</head>
 	<body id="back_ground">
@@ -64,7 +68,8 @@
 					<p></p>
 					<button title="Generate new quote." class="pull-right" type="button" id="newQuoteBtn" style="color:white;" onclick="newQuote(this)">New Quote
 					</button>
-					<button title="Tweet this quote." type="button" id="tweetBtn" onclick="tweetThis(this)">Tweet
+					<button title="Tweet this quote." type="button" id="tweetBtn" style="background: url(https://cdn3.iconfinder.com/data/icons/free-social-icons/67/twitter_circle_color-32.png);" 
+					 onclick="tweetThis(this)">  
 					</button>
 				</div>
 			</div>
