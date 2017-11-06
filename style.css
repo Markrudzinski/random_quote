@@ -1,0 +1,22 @@
+.quote_well {
+  background-color: rgb(240, 240, 240);
+  margin: 120px;
+  padding-bottom: 60px;
+  padding-right: 70px;
+  border: none;
+}
+#tweetBtn {
+  padding: 16px 16px;
+  border: none;
+}
+#newQuoteBtn {
+  color: white;
+}
+#quotee {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+#tweetBtn {
+  margin-left: 30px;
+  background: url(https://cdn3.iconfinder.com/data/icons/free-social-icons/67/twitter_circle_color-32.png);
+}
